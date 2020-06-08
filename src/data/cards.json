@@ -1,0 +1,25 @@
+[{
+    "term": "DNS",
+    "definition": "Rozproszona baza danych używana przez aplikacje TCP/IP do odwzorowywania nazw hostów na adresy IP i odwrotnie.",
+    "likes": 120,
+    "author": "Anna Nowak"
+},
+{
+    "term": "Tablica routingu",
+    "definition": "Zawiera skojarzenie pomiędzy adresem IP a adresem routera następnego przejścia.",
+    "likes": -3,
+    "author": "Antonio"
+},
+{   
+    "term": "Sieć typu stub",
+    "definition": "Sieć, która posiada tylko jedno wyjście na \"świat\"",
+    "likes": 0,
+    "author": "Jan Kowalski"
+},
+{
+    "term": "System autonomiczny",
+    "definition": "Fragment sieci Internet nadzorowany przez spójną władzę administracyjną.",
+    "likes": 20,
+    "author": "Jan Kowalski"
+}
+]
