@@ -2,8 +2,143 @@ import React from 'react';
 import { StyleSheet, Text, TextInput, View, SafeAreaView } from 'react-native';
 import { Input, Header, Card, Button, Icon } from 'react-native-elements';
 
+
+function getColorForUpvote(voteState) {
+    if(voteState === 1)
+        return "#00FF00";
+    else
+        return "#FFFFFF";
+}
+
+let firstVotingPanel: {
+    counter: 21,
+    counterVote: 0
+}
+
+let secondVotingPanel: {
+    counter: 37,
+    counterVote: 0
+}
+
+
 export default class Consultation extends React.Component{
+
+    constructor(props) {
+        super(props);
+        this.state = {
+                    firstVotingPanel: {
+                            counter: 21,
+                            counterVote: 0
+                        },
+                        secondVotingPanel: {
+                            counter: 37,
+                            counterVote: 0
+                        },
+            votingPanels: [firstVotingPanel, secondVotingPanel]
+                       };
+        this.incrementCounterForFirstComment = this.incrementCounterForFirstComment.bind(this);
+        this.decrementCounterForFirstComment = this.decrementCounterForFirstComment.bind(this);
+        this.incrementCounterForSecondComment = this.incrementCounterForSecondComment.bind(this);
+        this.decrementCounterForSecondComment = this.decrementCounterForSecondComment.bind(this);
+    }
+
+    incrementCounterForFirstComment() {
+        if(this.state.firstVotingPanel.counterVote === 0){
+            this.setState(() => {
+                return {firstVotingPanel: {
+                        counter : this.state.firstVotingPanel.counter + 1,
+                        counterVote: 1}};
+            });
+        }
+        else if(this.state.firstVotingPanel.counterVote === -1){
+            this.setState(() => {
+                return {firstVotingPanel: {
+                        counter : this.state.firstVotingPanel.counter + 2,
+                        counterVote: 1}};
+            });
+        }
+        else
+            this.setState(() => {
+                return {firstVotingPanel: {
+                        counter : this.state.firstVotingPanel.counter - 1,
+                        counterVote: 0}};
+            });
+    }
+
+    incrementCounterForSecondComment() {
+        if(this.state.secondVotingPanel.counterVote === 0){
+            this.setState(() => {
+                return {secondVotingPanel: {
+                        counter : this.state.secondVotingPanel.counter + 1,
+                        counterVote: 1}};
+            });
+        }
+        else if(this.state.secondVotingPanel.counterVote === -1){
+            this.setState(() => {
+                return {secondVotingPanel: {
+                        counter : this.state.secondVotingPanel.counter + 2,
+                        counterVote: 1}};
+            });
+        }
+        else
+            this.setState(() => {
+                return {secondVotingPanel: {
+                        counter : this.state.secondVotingPanel.counter - 1,
+                        counterVote: 0}};
+            });
+    }
+
+    decrementCounterForFirstComment() {
+        if(this.state.firstVotingPanel.counterVote === 0) {
+            this.setState(() => {
+                return {firstVotingPanel: {
+                        counter: this.state.firstVotingPanel.counter - 1,
+                        counterVote: -1}};
+            });
+        }
+        else if(this.state.firstVotingPanel.counterVote === 1){
+            this.setState(() => {
+                return {firstVotingPanel: {
+                        counter: this.state.firstVotingPanel.counter - 2,
+                        counterVote: -1}};
+            });
+        }
+        else
+            this.setState(() => {
+                return {firstVotingPanel: {
+                        counter: this.state.firstVotingPanel.counter + 1,
+                        counterVote: 0}};
+            });
+    }
+
+    decrementCounterForSecondComment() {
+        if(this.state.secondVotingPanel.counterVote === 0) {
+            this.setState(() => {
+                return {secondVotingPanel: {
+                        counter: this.state.secondVotingPanel.counter - 1,
+                        counterVote: -1}};
+            });
+        }
+        else if(this.state.secondVotingPanel.counterVote === 1){
+            this.setState(() => {
+                return {secondVotingPanel: {
+                        counter: this.state.secondVotingPanel.counter - 2,
+                        counterVote: -1}};
+            });
+        }
+        else
+            this.setState(() => {
+                return {secondVotingPanel: {
+                        counter: this.state.secondVotingPanel.counter + 1,
+                        counterVote: 0}};
+            });
+    }
+
     render(){
+
+        let { firstVotingPanel } = this.state;
+        let { secondVotingPanel } = this.state;
+
         return (
             <View>
                 <View>
@@ -61,15 +196,20 @@ export default class Consultation extends React.Component{
                             </Card>
                         </View>
                         <View style = {styles.iconField}>
-                            <Icon style = {styles.iconStyle}
+                            <Icon
+                                style = {styles.iconStyle}
                                 name="thumb-up"
-                                  onPress={() => self}
+                                color= {this.state.firstVotingPanel.counterVote === 1 ? "#00FF00" : "#000000"}
+                                onPress={this.incrementCounterForFirstComment}
                             />
                             <Text style = {styles.textData}>
-                                21
+                                {firstVotingPanel.counter}
                             </Text>
                             <Icon
+                                style={styles.iconStyle}
                                 name="thumb-down"
+                                color={this.state.firstVotingPanel.counterVote === -1 ? "#FF0000" : "#000000"}
+                                onPress={this.decrementCounterForFirstComment}
                             />
                         </View>
                     </View>
@@ -93,17 +233,28 @@ export default class Consultation extends React.Component{
                             </Card>
                         </View>
                         <View style = {styles.iconField}>
-                            <Icon style = {styles.iconStyle}
+                            <Icon
+                                style = {styles.iconStyle}
                                 name="thumb-up"
+                                color= {this.state.secondVotingPanel.counterVote === 1 ? "#00FF00" : "#000000"}
+                                onPress={this.incrementCounterForSecondComment}
                             />
                             <Text style = {styles.textData}>
-                                21
+                                {secondVotingPanel.counter}
                             </Text>
                             <Icon
+                                style={styles.iconStyle}
                                 name="thumb-down"
+                                color={this.state.secondVotingPanel.counterVote === -1 ? "#FF0000" : "#000000"}
+                                onPress={this.decrementCounterForSecondComment}
                             />
                         </View>
                     </View>
+                </View>
+                <View>
+                    {this.state.votingPanels.map(comment => (
+                        <Text> todo taking object from list</Text>
+                    ))}
                 </View>
                 <View>
                     <Card containerStyle={styles.addAnswerContainer}>
@@ -201,7 +352,7 @@ const styles = StyleSheet.create({
   },
   iconStyle: {
       marginTop: 10,
-      marginBottom: 5
+      marginBottom: 5,
   },
     textData:{
         marginBottom:5,
