@@ -1,17 +1,4 @@
 {
-  "name": "UXteachingHelper",
-  "displayName": "UXteachingHelper",
-  "expo": {
-    "name": "UXteachingHelper",
-    "slug": "expo-template-bare",
-    "version": "1.0.0",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
-    "assetBundlePatterns": [
-      "**/*"
-    ]
-  }
+  "name": "Quiz",
+  "displayName": "Quiz"
 }
