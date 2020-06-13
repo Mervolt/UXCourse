@@ -23,24 +23,34 @@ const DefinitionScreen = ({ navigation }) => {
   });
 
   const getDefinition = () => {
-    if (data.length > 0) return data[id].definition;
+    if (data.length > 0) return data[id].answer;
     else return "";
   };
 
   const getLikes = () => {
-    if (data.length > 0) return data[id].likes;
+    if (data.length > 0) return data[id].thumbs;
     else return 0;
   };
 
   const getAvatarTitle = () => {
-    if (data.length > 0) return data[id].author[0];
+    if (data.length > 0 && data[id].author != undefined) return data[id].author[0];
     else return "";
   };
 
   const getAuthor = () => {
-    if (data.length > 0) return data[id].author;
+    if (data.length > 0 && data[id].author != undefined) return data[id].author;
     else return "";
   };
+
+  const getIsVisible = () => {
+    if (data.length > 0) return data[id].isVisible;
+    else return 0;
+  };
+
+  const getIsStar = () => {
+    if (data.length > 0) return data[id].isStar;
+    else return false;
+  }
 
   const clearStack = () => {
     navigation.dispatch(
@@ -94,7 +104,9 @@ const DefinitionScreen = ({ navigation }) => {
       <View style={styles.cardView}>
         <CustomCard
           author={getAuthor()}
-          likes={getLikes()}
+          thumbs={getLikes()}
+          isVisible={getIsVisible()}
+          isStar={getIsStar()}
           avatarTitle={getAvatarTitle()}
         />
         <Card style={styles.card}>

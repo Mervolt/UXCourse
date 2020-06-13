@@ -1,5 +1,5 @@
 import * as React from "react";
-import {View} from "react-native";
+import {View, ScrollView} from "react-native";
 import {Button, Icon, Overlay, SearchBar} from "react-native-elements";
 import FiszkiList from "./fiszki_list_item";
 import NewFiszkaPopup from "./NewFiszkaPopup";
@@ -63,14 +63,14 @@ export default class FiszkiListView extends React.Component {
                         />}
                     />
                 </View>
-                <View>
+                <ScrollView>
                     <FiszkiList
                         fiszki={this.state.currFiszki}
                         expandedFiszka={this.state.expandedFiszka}
                         setFiszkaTouched={this.setFiszkaTouched.bind(this)}
                         removeFiszkaTouched={this.removeFiszkaTouched.bind(this)}
                     />
-                </View>
+                </ScrollView>
             </View>
         );
     }

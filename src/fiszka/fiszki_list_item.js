@@ -29,7 +29,7 @@ export default class FiszkiList extends React.Component {
                         />
                         }
                         {this.props.expandedFiszka === i &&
-                        <View>
+                        <ScrollView>
                             <ListItem
                                 onPress={() => this.resolveTouchOnItem(i)}
                                 key={i}
@@ -51,7 +51,7 @@ export default class FiszkiList extends React.Component {
                                 bottomDivider
                                 subtitleStyle={styles.expandedElementDownText}
                             />
-                        </View>
+                        </ScrollView>
                         }
                     </View>
                 ))}

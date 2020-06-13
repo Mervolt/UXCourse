@@ -17,14 +17,27 @@ const CardsHomeScreen = ({ navigation, route }) => {
   const numColumns = 2;
 
   const renderItem = ({ item, index }) => {
+    const data = require("_data/cards.json");
     const handleOnPress = () => {
       if (item.key == "LISTA WSZYSTKICH FISZEK") {
-        const data = require("_data/cards2.json");
         navigation.navigate("CardsList", {
           fiszki: data
         });
+      } else if (item.key == "PRZEGLĄDAJ ULUBIONE") {
+        navigation.navigate("Term", {
+          data: data.filter(card => card.isStar == true),
+          id: 0,
+          correct: 0,
+          incorrect: 0
+        });
+      } else if (item.key == "PRZEGLĄDAJ PRYWATNE") {
+        navigation.navigate("Term", {
+          data: data.filter(card => card.isVisible == -1),
+          id: 0,
+          correct: 0,
+          incorrect: 0
+        });
       } else {
-        const data = require("_data/cards.json");
         navigation.navigate("Term", {
           data: data,
           id: 0,

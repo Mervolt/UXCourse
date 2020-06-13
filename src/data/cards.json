@@ -1,25 +1,31 @@
 [{
-    "term": "DNS",
-    "definition": "Rozproszona baza danych używana przez aplikacje TCP/IP do odwzorowywania nazw hostów na adresy IP i odwrotnie.",
-    "likes": 120,
-    "author": "Anna Nowak"
+    "description": "DNS",
+    "answer": "Rozproszona baza danych używana przez aplikacje TCP/IP do odwzorowywania nazw hostów na adresy IP i odwrotnie.",
+    "thumbs": 120,
+    "isStar": false,
+    "isVisible": 0
 },
 {
-    "term": "Tablica routingu",
-    "definition": "Zawiera skojarzenie pomiędzy adresem IP a adresem routera następnego przejścia.",
-    "likes": -3,
-    "author": "Antonio"
+    "description": "Tablica routingu",
+    "answer": "Zawiera skojarzenie pomiędzy adresem IP a adresem routera następnego przejścia.",
+    "thumbs": -3,
+    "author": "Anna Nowak",
+    "isStar": true,
+    "isVisible": -1
 },
 {   
-    "term": "Sieć typu stub",
-    "definition": "Sieć, która posiada tylko jedno wyjście na \"świat\"",
-    "likes": 0,
-    "author": "Jan Kowalski"
+    "description": "Sieć typu stub",
+    "answer": "Sieć, która posiada tylko jedno wyjście na \"świat\"",
+    "thumbs": 0,
+    "isStar": false,
+    "isVisible": 1
 },
 {
-    "term": "System autonomiczny",
-    "definition": "Fragment sieci Internet nadzorowany przez spójną władzę administracyjną.",
-    "likes": 20,
-    "author": "Jan Kowalski"
+    "description": "System autonomiczny",
+    "answer": "Fragment sieci Internet nadzorowany przez spójną władzę administracyjną.",
+    "thumbs": 20,
+    "author": "Jan Kowalski",
+    "isStar": false,
+    "isVisible": 0
 }
 ]
