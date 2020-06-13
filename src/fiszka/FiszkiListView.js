@@ -3,14 +3,17 @@ import {View} from "react-native";
 import {Button, Icon, Overlay, SearchBar} from "react-native-elements";
 import FiszkiList from "./fiszki_list_item";
 import NewFiszkaPopup from "./NewFiszkaPopup";
+import FixedHeader from "../components/header";
 
 export default class FiszkiListView extends React.Component {
 
     constructor(props) {
         super(props)
+        console.log("D");
+        console.log(this.props);
         this.state = {
-            allFiszki: this.props.fiszki,
-            currFiszki: this.props.fiszki.sort(this.compareFiszki),
+            allFiszki: this.props.navigation.state.params.fiszki,
+            currFiszki: this.props.navigation.state.params.fiszki.sort(this.compareFiszki),
             searchField: '',
             overlayVisible: false,
             expandedFiszka: -1
@@ -40,12 +43,13 @@ export default class FiszkiListView extends React.Component {
                     value={this.state.searchField}
                     round
                 />
-                <View style={{alignItems: 'flex-end', marginRight: 15}}>
+                <View style={{alignItems: 'flex-end', backgroundColor: '#fff', height: 70}}>
                     <Button
                         buttonStyle={{backgroundColor: 'white'}}
                         icon={<Icon
                             name={'add'}
                             reverse
+                            size={20}
                             color={'rgb(255,94,0)'}
                         />}
                         onPress={this.toggleCreateFiszka}

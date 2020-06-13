@@ -1,0 +1,37 @@
+[
+  {
+    "description": "Ethernet",
+    "answer": "cos tam o ethernecie",
+    "isStar": false,
+    "isVisible": 0,
+    "thumbs": -5
+  },
+  {
+    "description": "Zwierzaczkizzzzzz",
+    "answer": "cos tam o ethernecie",
+    "isStar": true,
+    "isVisible": -1,
+    "thumbs": 32
+  },
+  {
+    "description": "TCP",
+    "answer": "cos tam o ethernecie",
+    "isStar": false,
+    "isVisible": 1,
+    "thumbs": 32
+  },
+  {
+    "description": "Tworzywo",
+    "answer": "cos tam o ethernecie",
+    "isStar": false,
+    "isVisible": -1,
+    "thumbs": 32
+  },
+  {
+    "description": "Ethernet",
+    "answer": "cos tam o ethernecie",
+    "isStar": false,
+    "isVisible": -1,
+    "thumbs": 32
+  }
+]

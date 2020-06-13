@@ -84,7 +84,6 @@ const TermScreen = ({ navigation }) => {
   return (
     <View style={styles.cardView}>
       <StatusBar barStyle="light-content" />
-      <FixedHeader title="Sieci komputerowe" />
       <View style={styles.cardView}>
         <CustomCard
           author={getAuthor()}

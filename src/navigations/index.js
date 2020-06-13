@@ -1,35 +1,19 @@
-import { createStackNavigator } from "react-navigation-stack";
+import { createDrawerNavigator } from "react-navigation-drawer";
 import { createAppContainer } from "react-navigation";
-import FixedHeader from "_components/header";
-import CardsHomeScreen from "_scenes/cards";
-import React from "react";
-import DefinitionScreen from "_scenes/definition";
-import TermScreen from "_scenes/term";
-import SummaryScreen from "_scenes/summary";
+import CardsStack from "./cardsStack" ;
 
-const RootStack = {
-  initialRouteName: "Cards",
-  header: <FixedHeader title="Sieci komputerowe" />,
-  headerMode: "none"
-};
 
-const RouteConfigs = {
+const RootDrawerNavigator = createDrawerNavigator({
   Cards: {
-    screen: CardsHomeScreen
-  },
-  Term: {
-    screen: TermScreen
-  },
-  Definition: {
-    screen: DefinitionScreen
-  },
-  Summary: {
-    screen: SummaryScreen
+    screen: CardsStack,
+    navigationOptions: {
+      drawerLabel: "FISZKI"
+    }
   }
-};
+});
 
 const AppNavigator = createAppContainer(
-  createStackNavigator(RouteConfigs, RootStack)
+  RootDrawerNavigator
 );
 
 export default AppNavigator;

@@ -18,13 +18,20 @@ const CardsHomeScreen = ({ navigation, route }) => {
 
   const renderItem = ({ item, index }) => {
     const handleOnPress = () => {
-      const data = require("_data/cards.json");
-      navigation.navigate("Term", {
-        data: data,
-        id: 0,
-        correct: 0,
-        incorrect: 0
-      });
+      if (item.key == "LISTA WSZYSTKICH FISZEK") {
+        const data = require("_data/cards2.json");
+        navigation.navigate("CardsList", {
+          fiszki: data
+        });
+      } else {
+        const data = require("_data/cards.json");
+        navigation.navigate("Term", {
+          data: data,
+          id: 0,
+          correct: 0,
+          incorrect: 0
+        });
+      }
     };
 
     return (
@@ -44,8 +51,6 @@ const CardsHomeScreen = ({ navigation, route }) => {
 
   return (
     <View>
-      <StatusBar barStyle="light-content" />
-      <FixedHeader title="Sieci komputerowe" />
       <FlatList
         style={{ margin: 20 }}
         data={dataList}

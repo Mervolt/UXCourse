@@ -40,7 +40,6 @@ const SummaryScreen = ({ navigation }) => {
   return (
     <View style={styles.cardView}>
       <StatusBar barStyle="light-content" />
-      <FixedHeader title="Sieci komputerowe" />
       <View style={styles.cardView}>
         <Card style={styles.card}>
           <View
