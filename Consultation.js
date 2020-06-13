@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, View, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, TextInput, View, ScrollView } from 'react-native';
 import { Header, Card, Button, Icon } from 'react-native-elements';
 
 
@@ -7,21 +7,44 @@ export default class Consultation extends React.Component{
 
     constructor(props) {
         super(props);
-        let firstVotingPanel = {
+        let firstUser = {
             key: 0,
             counter: 21,
-            counterVote: 0
+            counterVote: 0,
+            name: 'lukowalski',
+            comment: 'Hej, chciałem zapytać się jak inni rozumieją prawo Brzytwy?'
         };
-        let secondVotingPanel = {
+        let secondUser = {
             key: 1,
             counter: 37,
-            counterVote: 0
+            counterVote: 0,
+            name: 'RafauFromOblegorek',
+            comment: 'Cześć, prawo brzytwy odnosi się do dążenia do prostoty'
         };
         this.state = {
-            votingPanels: [firstVotingPanel, secondVotingPanel]
+            votingPanels: [firstUser, secondUser],
+            commentContent: '',
+            commentCounter: 2,
                        };
+        this.addComment = this.addComment.bind(this);
+    }
 
 
+    addComment(){
+        let user = {
+            key: this.state.commentCounter,
+            counter: 0,
+            counterVote: 0,
+            name: 'Me',
+            comment: this.state.commentContent
+        }
+        this.state.votingPanels.push(user);
+        console.log(user);
+        this.setState(() =>{
+            return {
+                user: user
+            }
+        })
     }
 
 
@@ -41,7 +64,7 @@ export default class Consultation extends React.Component{
 
         this.setState(() => {
             return {
-                firstVotingPanel: {
+                firstUser: {
                     counter: panel.counter,
                     counterVote: panel.counterVote
                 }
@@ -65,20 +88,18 @@ export default class Consultation extends React.Component{
 
         this.setState(() => {
             return {
-                firstVotingPanel: {
+                firstUser: {
                     counter: panel.counter,
                     counterVote: panel.counterVote
                 }
             };
         });
     }
-    
-    render(){
 
-        let { votingPanels } = this.state;
-        console.log(votingPanels);
+    render(){
+        let { votingPanels: users } = this.state;
         return (
-            <View>
+            <ScrollView>
                 <View>
                     <Header  containerStyle={{elevation:0}}
                              leftComponent={{
@@ -116,19 +137,25 @@ export default class Consultation extends React.Component{
                     />
                 </View>
                 <View>
-                    {votingPanels.map(comment => (
+                    {users.map(comment => (
                         <View style = {styles.row}>
                             <View>
                                 <Card containerStyle={styles.cardContainer}>
                                     <View style = {styles.userAnswer}>
                                         <View style = {styles.userDataField}>
-                                            <Text  style = {styles.textUserData}>
-                                                User2
-                                            </Text>
+                                            <View>
+                                                <Text  style = {styles.textUserData}>
+                                                    {comment.name}
+                                                </Text>
+                                                <Icon
+                                                    style ={styles.iconStyle}
+                                                    name="person"
+                                                />
+                                            </View>
                                         </View>
                                         <View style = {styles.userTextField}>
                                             <Text  style = {styles.textUserData}>
-                                                AnswersAnswersAnswers
+                                                {comment.comment}
                                             </Text>
                                         </View>
                                     </View>
@@ -159,19 +186,26 @@ export default class Consultation extends React.Component{
                         <View>
                             <TextInput
                                 placeholder = "Dodaj komentarz"
+                                ref={input => { this.textInput = input }}
+                                onChangeText={(value) => this.setState({commentContent: value})}
                             />
                         </View>
                         <View style={styles.row}>
                             <View style = {styles.buttonViewLeft}>
-                                <Button title="Anuluj" buttonStyle = {styles.buttonLeft} />
+                                <Button title="Anuluj" buttonStyle = {styles.buttonLeft}
+                                    onPress={() => this.textInput.clear()}
+                                />
+
                             </View>
                             <View style = {styles.buttonViewRight}>
-                                <Button title="Dodaj" buttonStyle = {styles.buttonRight}/>
+                                <Button title="Dodaj" buttonStyle = {styles.buttonRight}
+                                    onPress={this.addComment}
+                                />
                             </View>
                         </View>
                     </Card>
                 </View>
-            </View>
+            </ScrollView>
         )
     }
 }
@@ -218,6 +252,7 @@ const styles = StyleSheet.create({
     flex: 1,
     minHeight: 100,
     minWidth: 280,
+      padding: 3
   },
   userDataField:{
       flex: 1,
@@ -228,6 +263,7 @@ const styles = StyleSheet.create({
 
   textUserData:{
       marginTop: 5,
+      padding: 3,
       textAlign: "center",
       textAlignVertical: "center",
       color: "black"
