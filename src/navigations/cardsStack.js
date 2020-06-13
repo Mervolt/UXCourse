@@ -7,7 +7,7 @@ import DefinitionScreen from "_scenes/definition";
 import TermScreen from "_scenes/term";
 import SummaryScreen from "_scenes/summary";
 import FiszkiListView from "_fiszka/FiszkiListView";
-import { Root } from "native-base";
+import Consultation from "_con/Consultation";
 
 const CardsStackOpts = {
     initialRouteName: "Cards",
@@ -41,6 +41,12 @@ const CardsStackOpts = {
     },
     CardsList: {
       screen: FiszkiListView,
+      navigationOptions: ({navigation}) => {
+        return {header: () => <FixedHeader title="Sieci komputerowe" navigation={navigation}/>}
+        }
+    },
+    Consultation: {
+      screen: Consultation,
       navigationOptions: ({navigation}) => {
         return {header: () => <FixedHeader title="Sieci komputerowe" navigation={navigation}/>}
         }

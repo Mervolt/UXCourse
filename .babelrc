@@ -18,7 +18,8 @@
             "_styles": "./src/styles",
             "_utils": "./src/utils",
             "_data": "./src/data",
-            "_fiszka": "./src/fiszka"
+            "_fiszka": "./src/fiszka",
+            "_con": "./src/consultation"
           }
         }
       ]
