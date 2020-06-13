@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import CustomCard from "_components/customcard";
 import Icon from "react-native-vector-icons/Entypo";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { getTokenSourceMapRange } from "typescript";
 
 const DefinitionScreen = ({ navigation }) => {
   const [data, setData] = useState([]);
@@ -45,6 +46,11 @@ const DefinitionScreen = ({ navigation }) => {
   const getIsVisible = () => {
     if (data.length > 0) return data[id].isVisible;
     else return 0;
+  };
+
+  const getTerm = () => {
+    if (data.length > 0) return data[id].description.toUpperCase();
+    else return "";
   };
 
   const getIsStar = () => {
@@ -95,7 +101,7 @@ const DefinitionScreen = ({ navigation }) => {
 
   const handleOnPressConsult = () => {
     clearStack();
-    navigation.navigate("Consultation", {title: "Ala"})
+    navigation.navigate("Consultation", {title: getTerm()})
   };
 
   return (

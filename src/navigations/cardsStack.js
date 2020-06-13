@@ -18,37 +18,37 @@ const CardsStackOpts = {
     Cards: {
       screen: CardsHomeScreen,
       navigationOptions: ({navigation}) => {
-      return {header: () => <FixedHeader title="Sieci komputerowe" navigation={navigation}/>}
+      return {header: () => <FixedHeader title="Sieci komputerowe" navigation={navigation} consult={false}/>}
       },
     },
     Term: {
       screen: TermScreen,
       navigationOptions: ({navigation}) => {
-        return {header: () => <FixedHeader title="Sieci komputerowe" navigation={navigation}/>}
+        return {header: () => <FixedHeader title="Sieci komputerowe" navigation={navigation} consult={false}/>}
         }
     },
     Definition: {
       screen: DefinitionScreen,
       navigationOptions: ({navigation}) => {
-        return {header: () => <FixedHeader title="Sieci komputerowe" navigation={navigation}/>}
+        return {header: () => <FixedHeader title="Sieci komputerowe" navigation={navigation} consult={false}/>}
         }
     },
     Summary: {
       screen: SummaryScreen,
       navigationOptions: ({navigation}) => {
-        return {header: () => <FixedHeader title="Sieci komputerowe" navigation={navigation}/>}
+        return {header: () => <FixedHeader title="Sieci komputerowe" navigation={navigation} consult={false}/>}
         }
     },
     CardsList: {
       screen: FiszkiListView,
       navigationOptions: ({navigation}) => {
-        return {header: () => <FixedHeader title="Sieci komputerowe" navigation={navigation}/>}
+        return {header: () => <FixedHeader title="Sieci komputerowe" navigation={navigation} consult={false}/>}
         }
     },
     Consultation: {
       screen: Consultation,
       navigationOptions: ({navigation}) => {
-        return {header: () => <FixedHeader title="Sieci komputerowe" navigation={navigation}/>}
+        return {header: () => <FixedHeader title="Sieci komputerowe" navigation={navigation} consult={true}/>}
         }
     }
   };

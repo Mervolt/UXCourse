@@ -91,6 +91,11 @@ const TermScreen = ({ navigation }) => {
     navigation.navigate("Summary", { correct: correct, incorrect: incorrect });
   };
 
+  const handleOnPressConsult = () => {
+    clearStack();
+    navigation.navigate("Consultation", {title: getTerm()})
+  };
+
   return (
     <View style={styles.cardView}>
       <StatusBar barStyle="light-content" />
@@ -163,6 +168,7 @@ const TermScreen = ({ navigation }) => {
           containerStyle={{ marginRight: 48, width: 120 }}
           title="SKONSULTUJ"
           type="outline"
+          onPress={handleOnPressConsult}
         />
         <Button
           containerStyle={{ marginLeft: 48, width: 120 }}
