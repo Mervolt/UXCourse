@@ -1,7 +1,7 @@
 [{
     "description": "DNS",
     "answer": "Rozproszona baza danych używana przez aplikacje TCP/IP do odwzorowywania nazw hostów na adresy IP i odwrotnie.",
-    "thumbs": 120,
+    "thumbs": -2,
     "isStar": false,
     "isVisible": 0
 },
@@ -27,5 +27,21 @@
     "author": "Jan Kowalski",
     "isStar": false,
     "isVisible": 0
+},
+{
+    "description": "MTU",
+    "answer": "Maximum Transmission Unit",
+    "thumbs": 20,
+    "author": "Jan Kowalski",
+    "isStar": true,
+    "isVisible": 1
+},
+{
+    "description": "ARP",
+    "answer": "Address Resolution Protocol",
+    "thumbs": 20,
+    "author": "Jan Kowalski",
+    "isStar": true,
+    "isVisible": 1
 }
 ]

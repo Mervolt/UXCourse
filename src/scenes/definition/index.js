@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 import CustomCard from "_components/customcard";
 import Icon from "react-native-vector-icons/Entypo";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { getTokenSourceMapRange } from "typescript";
 
 const DefinitionScreen = ({ navigation }) => {
   const [data, setData] = useState([]);
@@ -34,7 +33,8 @@ const DefinitionScreen = ({ navigation }) => {
   };
 
   const getAvatarTitle = () => {
-    if (data.length > 0 && data[id].author != undefined) return data[id].author[0];
+    if (data.length > 0 && data[id].author != undefined)
+      return data[id].author[0];
     else return "";
   };
 
@@ -56,7 +56,7 @@ const DefinitionScreen = ({ navigation }) => {
   const getIsStar = () => {
     if (data.length > 0) return data[id].isStar;
     else return false;
-  }
+  };
 
   const clearStack = () => {
     navigation.dispatch(
@@ -99,10 +99,10 @@ const DefinitionScreen = ({ navigation }) => {
     navigation.navigate("Summary", { correct: correct, incorrect: incorrect });
   };
 
-  // const handleOnPressConsult = () => {
-  //   clearStack();
-  //   navigation.navigate("Consultation", {title: getTerm()})
-  // };
+  const handleOnPressConsult = () => {
+    clearStack();
+    navigation.navigate("Consultation", { title: getTerm() });
+  };
 
   return (
     <View style={styles.cardView}>
@@ -152,7 +152,7 @@ const DefinitionScreen = ({ navigation }) => {
           containerStyle={{ marginRight: 48, width: 120 }}
           title="SKONSULTUJ"
           type="outline"
-          // onPress={handleOnPressConsult}
+          onPress={handleOnPressConsult}
         />
         <Button
           containerStyle={{ marginLeft: 48, width: 120 }}
@@ -202,7 +202,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     margin: 0,
     padding: 0,
-    backgroundColor: "#BBBABA"
+    backgroundColor: "#cecece"
     // backgroundColor: "#FF9B7B"
   },
   button: {

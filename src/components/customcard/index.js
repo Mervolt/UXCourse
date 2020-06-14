@@ -8,6 +8,8 @@ import { useState, useEffect } from "react";
 const CustomCard = props => {
   const [starColor, setStarColor] = useState("#787878");
   const [isVisible, setIsVisible] = useState(0);
+  const [counter, setCounter] = useState(0);
+  const [vote, setVote] = useState(0);
 
   const handleStarPress = () => {
     if (starColor == "black") setStarColor("#BBBABA");
@@ -23,14 +25,37 @@ const CustomCard = props => {
   };
 
   useEffect(() => {
-    if (props.isVisible != undefined) {
-      setIsVisible(props.isVisible);
-      if (props.isStar)
-        setStarColor("black");
-      else
-        setStarColor("#BBBABA");
-    }   
+    if (props.isVisible != undefined) setIsVisible(props.isVisible);
+    if (props.isStar != undefined && props.isStar) setStarColor("black");
+    else setStarColor("#BBBABA");
+    if (props.thumbs != undefined) setCounter(props.thumbs);
   }, [props]);
+
+  const handleUpPress = () => {
+    if (vote == 1) {
+      setVote(0);
+      setCounter(counter - 1);
+    } else if (vote == -1) {
+      setVote(1);
+      setCounter(counter + 2);
+    } else if (vote == 0) {
+      setVote(1);
+      setCounter(counter + 1);
+    }
+  };
+
+  const handleDownPress = () => {
+    if (vote == 1) {
+      setVote(-1);
+      setCounter(counter - 2);
+    } else if (vote == -1) {
+      setVote(0);
+      setCounter(counter + 1);
+    } else if (vote == 0) {
+      setVote(-1);
+      setCounter(counter - 1);
+    }
+  };
 
   return (
     <Card style={styles.smallCard}>
@@ -62,43 +87,45 @@ const CustomCard = props => {
             )}
           </View>
         </View>
-        <View style={{ flexDirection: "row", width: 80}}>
-        <View style={{width: 100, flexDirection: 'row'}}>
-          <Icon
-            name="thumb-down"
-            size={30}
-            style={{ transform: [{ rotateX: "180deg" }] }}
-            color="black"
-          />
-          <View
-            style={{
-              alignContent: "center",
-              justifyContent: "center",
-              alignItems: "center",
-              margin: 5
-              // backgroundColor: "#BBBABA"
-            }}
-          >
-            <View style={{ width: 24 , marginBottom: 5}}>
-              <Text
-                style={{
-                  textAlign: "center",
-                  alignSelf: "center",
-                  color: "black"
-                }}
-              >
-                {props.thumbs}
-              </Text>
-            </View>
-          </View>
+        <View style={{ flexDirection: "row", width: 80 }}>
+          <View style={{ width: 100, flexDirection: "row" }}>
             <Icon
               name="thumb-up"
-              style={{ transform: [{ rotateX: "180deg" }], marginTop: 7 }}
               size={30}
-              color="black"
+              iconStyle={{ transform: [{ rotateY: "180deg" }] }}
+              color={vote === 1 ? "#219653" : "#000000"}
+              onPress={handleUpPress}
+            />
+            <View
+              style={{
+                alignContent: "center",
+                justifyContent: "center",
+                alignItems: "center",
+                margin: 5
+                // backgroundColor: "#BBBABA"
+              }}
+            >
+              <View style={{ width: 24, marginBottom: 5 }}>
+                <Text
+                  style={{
+                    textAlign: "center",
+                    alignSelf: "center",
+                    color: "black"
+                  }}
+                >
+                  {counter}
+                </Text>
+              </View>
+            </View>
+            <Icon
+              name="thumb-up"
+              iconStyle={{ transform: [{ rotateX: "180deg" }], marginTop: 7 }}
+              size={30}
+              color={vote === -1 ? "#EB5757" : "#000000"}
+              onPress={handleDownPress}
             />
           </View>
-          <View style={{width: 40}}>
+          <View style={{ width: 40 }}>
             {(isVisible === 1 && (
               <Icon
                 name="visibility"
@@ -114,13 +141,7 @@ const CustomCard = props => {
                   color="black"
                   onPress={handlePressVisibleOff}
                 />
-              ) || (
-                <Icon
-                  name="visibility"
-                  size={30}
-                  color="#BBBABA"
-                />
-              ))}
+              )) || <Icon name="visibility" size={30} color="#BBBABA" />}
           </View>
           <View>
             <Icon

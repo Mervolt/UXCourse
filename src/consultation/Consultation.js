@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, TextInput, View, ScrollView } from "react-native";
-import { Header, Card, Button, Icon } from "react-native-elements";
+import { Header, Card, Button, Icon, Avatar } from "react-native-elements";
+import { responsiveFontSize } from "react-native-responsive-dimensions";
 
 export default class Consultation extends React.Component {
   constructor(props) {
@@ -97,7 +98,11 @@ export default class Consultation extends React.Component {
           <Header
             centerComponent={{
               text: this.state.title,
-              style: { color: "#000000", fontSize: 24, fontWeight: "bold" }
+              style: {
+                color: "#000000",
+                fontSize: responsiveFontSize(2),
+                fontWeight: "bold"
+              }
             }}
             containerStyle={{
               backgroundColor: "lightgray",
@@ -108,33 +113,48 @@ export default class Consultation extends React.Component {
         <View>
           {users.map(comment => (
             <View style={styles.row}>
-              <View>
-                <Card containerStyle={styles.cardContainer}>
+              <Card containerStyle={styles.cardContainer}>
+                <View style={styles.row}>
                   <View style={styles.userAnswer}>
                     <View style={styles.userDataField}>
-                      <View>
+                      <View
+                        style={{
+                          justifyContent: "center",
+                          alignContent: "center",
+                          alignItems: "center"
+                        }}
+                      >
                         <Text style={styles.textUserData}>{comment.name}</Text>
-                        <Icon style={styles.iconStyle} name="person" />
+                        {/* <Icon style={styles.iconStyle} name="person" /> */}
+                        <Avatar
+                          size="small"
+                          rounded
+                          containerStyle={{
+                            backgroundColor: "#BBBABA",
+                            alignSelf: "center"
+                          }}
+                          title="M"
+                        />
                       </View>
                     </View>
                     <View style={styles.userTextField}>
                       <Text style={styles.textUserData}>{comment.comment}</Text>
                     </View>
                   </View>
-                </Card>
-              </View>
+                </View>
+              </Card>
               <View style={styles.iconField}>
                 <Icon
                   style={styles.iconStyle}
                   name="thumb-up"
-                  color={comment.counterVote === 1 ? "#00FF00" : "#000000"}
+                  color={comment.counterVote === 1 ? "#219653" : "#000000"}
                   onPress={() => this.incrementCounter(comment)}
                 />
                 <Text style={styles.textData}>{comment.counter}</Text>
                 <Icon
                   style={styles.iconStyle}
                   name="thumb-down"
-                  color={comment.counterVote === -1 ? "#FF0000" : "#000000"}
+                  color={comment.counterVote === -1 ? "#EB5757" : "#000000"}
                   onPress={() => this.decrementCounter(comment)}
                 />
               </View>
@@ -210,17 +230,17 @@ const styles = StyleSheet.create({
     alignItems: "flex-end"
   },
   iconField: {
-    marginTop: 30,
-    width: 20,
+    marginTop: 40,
+    width: 30,
     maxWidth: 30,
-    marginRight: 20,
+    marginRight: 10,
     alignItems: "center",
     marginLeft: 0
   },
   userTextField: {
     flex: 1,
     minHeight: 100,
-    minWidth: 280,
+    minWidth: 250,
     padding: 3
   },
   userDataField: {
@@ -233,7 +253,7 @@ const styles = StyleSheet.create({
   textUserData: {
     marginTop: 5,
     padding: 3,
-    textAlign: "center",
+    textAlign: "left",
     textAlignVertical: "center",
     color: "black"
   },
@@ -243,7 +263,7 @@ const styles = StyleSheet.create({
     margin: 0,
     marginRight: 10,
     marginTop: 30,
-    minWidth: 360
+    minWidth: 310
   },
   addAnswerContainer: {
     elevation: 2,

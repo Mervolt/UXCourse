@@ -33,9 +33,9 @@ const SummaryScreen = ({ navigation }) => {
   };
 
   const handleOnPressBack = () => {
-      clearStack();
-      navigation.navigate('Cards');
-  }
+    clearStack();
+    navigation.navigate("Cards");
+  };
 
   return (
     <View style={styles.cardView}>
@@ -84,7 +84,7 @@ const SummaryScreen = ({ navigation }) => {
         style={{
           margin: 10,
           padding: 10,
-        //   flexDirection: "row",
+          //   flexDirection: "row",
           alignItems: "flex-end",
           justifyContent: "flex-end",
           alignContent: "flex-end"

@@ -1,7 +1,6 @@
 import { createDrawerNavigator } from "react-navigation-drawer";
 import { createAppContainer } from "react-navigation";
-import CardsStack from "./cardsStack" ;
-
+import CardsStack from "./cardsStack";
 
 const RootDrawerNavigator = createDrawerNavigator({
   Cards: {
@@ -12,8 +11,6 @@ const RootDrawerNavigator = createDrawerNavigator({
   }
 });
 
-const AppNavigator = createAppContainer(
-  RootDrawerNavigator
-);
+const AppNavigator = createAppContainer(RootDrawerNavigator);
 
 export default AppNavigator;
