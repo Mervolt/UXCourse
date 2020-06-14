@@ -9,6 +9,8 @@ const FixedHeader = ({ title, navigation, consult }) => {
 
   return (
     <Header
+      containerStyle={{marginTop: 0}}
+      statusBarProps={{translucent: true}}
       leftComponent={<MenuIcon onPress={openMenu} />}
       centerComponent={{
         text: title.toUpperCase(),
